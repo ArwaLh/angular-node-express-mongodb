@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Jennifer Mendoza",
+    "address": "91955 Mosinee Parkway, Indianapolis, IN 46278",
+    "phone": "(314) 291-6958",
+    "email": "jenifer@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Eric Ortiz",
+    "address": "62 Warner Place, Washington, DC 20525",
+    "phone": "(902) 758-7304",
+    "email": "eric@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Phyllis Wu",
+    "address": "88 Burning Wood Junction, Anaheim, CA 92812",
+    "phone": "(255) 146-6886",
+    "email": "phyllis@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Andrea Shaw",
+    "address": "229 Golden Leaf Road, Gadsden, AL 35905",
+    "phone": "(417) 210-7652",
+    "email": "andrea@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "George Carter",
+    "address": "6502 Montana Junction, New Orleans, LA 70174",
+    "phone": "(995) 113-1620",
+    "email": "george@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Anna Williams",
+    "address": "58034 Nelson Street, Washington, DC 20036",
+    "phone": "(527) 653-2676",
+    "email": "anna@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Alice Chavez",
+    "address": "6 Granby Drive, Topeka, KS 66606",
+    "phone": "(432) 421-3267",
+    "email": "alice@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Willie Stiles",
+    "address": "3409 Oriole Point, Peoria, IL 61629",
+    "phone": "(218) 696-2526",
+    "email": "willie@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Sandra Kim",
+    "address": "609 Everett Avenue, Des Moines, IA 50330",
+    "phone": "(650) 549-3249",
+    "email": "sandra@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Vihaan Patel",
+    "address": "3061 Sachs Lane, Scottsdale, AZ 85255",
+    "phone": "(726) 698-7401",
+    "email": "vihann@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Michelle Caster",
+    "address": "710 Old Gate Circle, Chicago, IL 60641",
+    "phone": "(145) 449-3473",
+    "email": "michelle@test.com",
+    "password": "admin"
+  },
+  {
+    "name": "Carl Murray",
+    "address": "0864 Bluestem Center, Sacramento, CA 95823",
+    "phone": "(462) 542-2378",
+    "email": "carl@test.com",
+    "password": "admin"
+
+  }
+]

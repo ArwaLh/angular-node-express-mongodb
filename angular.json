@@ -1,0 +1,127 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular-node-contact-manager-newer": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-node-contact-manager-newer",
+            "index": "src/client2/index.html",
+            "main": "src/client2/main.ts",
+            "polyfills": "src/client2/polyfills.ts",
+            "tsConfig": "tsconfig.json",
+            "assets": [
+              "src/client2/favicon.ico",
+              "src/client2/assets"
+            ],
+            "styles": [
+              "src/client2/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/client2/environments/environment.ts",
+                  "with": "src/client2/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-node-contact-manager-newer:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-node-contact-manager-newer:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-node-contact-manager-newer:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/client2/test.ts",
+            "polyfills": "src/client2/polyfills.ts",
+            "tsConfig": "src/client2/tsconfig.spec.json",
+            "karmaConfig": "src/client2/karma.conf.js",
+            "styles": [
+              "src/client2/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/client2/favicon.ico",
+              "src/client2/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/client2/tsconfig.app.json",
+              "src/client2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "angular-node-contact-manager-newer-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "src/client2/e2e/protractor.conf.js",
+            "devServerTarget": "angular-node-contact-manager-newer:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-node-contact-manager-newer:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "src/client2/e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "angular-node-contact-manager-newer"
+}
