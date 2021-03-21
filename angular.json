@@ -14,25 +14,39 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/angular-node-contact-manager-newer",
-            "index": "src/client2/index.html",
-            "main": "src/client2/main.ts",
-            "polyfills": "src/client2/polyfills.ts",
+            "index": "src/client/index.html",
+            "main": "src/client/main.ts",
+            "polyfills": "src/client/polyfills.ts",
             "tsConfig": "tsconfig.json",
             "assets": [
-              "src/client2/favicon.ico",
-              "src/client2/assets"
+              "src/client/favicon.ico",
+              "src/client/assets"
             ],
             "styles": [
-              "src/client2/styles.css"
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/flag-icon-css/sass/flag-icon.scss",
+              "node_modules/ti-icons/css/themify-icons.css",
+              "node_modules/simple-line-icons/scss/simple-line-icons.scss",
+              "src/client/assets/icon/icofont/css/icofont.css",
+              "node_modules/font-awesome-scss/scss/font-awesome.scss",
+              "node_modules/ng2-toasty/style-bootstrap.css",
+              "node_modules/ng2-toasty/style-default.css",
+              "node_modules/ng2-toasty/style-material.css",
+              "src/client/assets/css/animate.scss",
+              "src/client/styles.css",
+              "src/client/styles.scss",
+              "src/client/assets/css/custom.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/client2/environments/environment.ts",
-                  "with": "src/client2/environments/environment.prod.ts"
+                  "replace": "src/client/environments/environment.ts",
+                  "with": "src/client/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -67,17 +81,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/client2/test.ts",
-            "polyfills": "src/client2/polyfills.ts",
-            "tsConfig": "src/client2/tsconfig.spec.json",
-            "karmaConfig": "src/client2/karma.conf.js",
+            "main": "src/client/test.ts",
+            "polyfills": "src/client/polyfills.ts",
+            "tsConfig": "src/client/tsconfig.spec.json",
+            "karmaConfig": "src/client/karma.conf.js",
             "styles": [
-              "src/client2/styles.css"
+              "src/client/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "src/client2/favicon.ico",
-              "src/client2/assets"
+              "src/client/favicon.ico",
+              "src/client/assets"
             ]
           }
         },
@@ -85,8 +99,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/client2/tsconfig.app.json",
-              "src/client2/tsconfig.spec.json"
+              "src/client/tsconfig.app.json",
+              "src/client/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -102,7 +116,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "src/client2/e2e/protractor.conf.js",
+            "protractorConfig": "src/client/e2e/protractor.conf.js",
             "devServerTarget": "angular-node-contact-manager-newer:serve"
           },
           "configurations": {
@@ -114,7 +128,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "src/client2/e2e/tsconfig.e2e.json",
+            "tsConfig": "src/client/e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]

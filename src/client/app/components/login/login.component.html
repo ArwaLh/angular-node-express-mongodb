@@ -1,0 +1,51 @@
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login-card card-body auth-body">
+          <form class="md-float-material" #loginForm="ngForm" (submit)="onSubmit(loginForm)">
+            <div class="auth-box">
+              <div class="row m-b-20">
+                <div class="col-md-12">
+                  <h3 class="text-center txt-primary">Welcome to <br/> Simple Secure Contact Manager</h3>
+                </div>
+              </div>
+              <div class="row m-b-20">
+                <div class="col-md-12">
+                  <h3 class="text-center txt-primary">Please enter the password for your contact <br> data file</h3>
+                </div>
+              </div>
+              <hr/>
+              <div class="input-group">
+                <input type="text" class="form-control" name="username" placeholder="Username" ngModel>
+              </div>
+              <div class="input-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" ngModel>
+              </div>
+
+              <div class="row m-t-30">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Login</button>
+
+                </div>
+              </div>
+              <hr/>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+

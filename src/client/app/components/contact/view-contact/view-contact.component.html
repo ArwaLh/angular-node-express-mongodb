@@ -1,0 +1,35 @@
+<div class="col-12">
+  <h3>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-5">{{selectedContact.name}}</h2>
+        <span class="mt-5">
+          <i class="call icon"></i>
+          Phone : {{selectedContact.phone}}
+        </span>
+        <div class="description">
+          Address: {{selectedContact.address}}
+        </div>
+        <div class="description">
+          Email: {{selectedContact.email}}
+        </div>
+
+      </div>
+    </div>
+  </h3>
+  <div class="d-flex justify-content-between">
+    <div class="text-left" *ngIf="auth.isLoggedIn()">
+      <button class="btn btn-primary" (click)="onChangeAction('add')">
+        <i class="add user icon" aria-hidden="true"></i>
+        Add Contact
+      </button>
+    </div>
+    <div class="text-right" *ngIf="auth.isLoggedIn()">
+      <button class="btn btn-primary" (click)="onChangeAction('edit')">
+        <i class="add user icon" aria-hidden="true"></i>
+        Edit Contact
+      </button>
+    </div>
+  </div>
+
+</div>

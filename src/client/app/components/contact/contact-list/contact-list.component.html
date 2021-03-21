@@ -1,0 +1,72 @@
+<div id="pcoded" (window:resize)="onResize($event)" class="pcoded iscollapsed" theme-layout="vertical"
+  vertical-placement="left" vertical-layout="wide" [attr.pcoded-device-type]="deviceType"
+  [attr.vertical-nav-type]="verticalNavType" [attr.vertical-effect]="verticalEffect" vnavigation-view="view1">
+  <div class="pcoded-overlay-box"></div>
+  <div class="pcoded-container navbar-wrapper">
+    <nav class="navbar header-navbar pcoded-header" header-theme="theme4" pcoded-header-position="fixed">
+      <div class="navbar-wrapper">
+        <div class="navbar-container">
+          <div>
+            <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
+              <li class="header-notification lng-dropdown">
+                <a href="javascript:;" id="dropdown-active-item">
+                  <i class="flag-icon flag-icon-gb m-r-5"></i> English
+                </a>
+              </li>
+              <li class="user-profile header-notification">
+                <a [routerLink]="['/']">
+                  <span>John Doe</span>
+                  <i class="ti-angle-down"></i>
+                </a>
+                <ul class="show-notification profile-notification">
+                  <li>
+                    <a [routerLink]="['/auth/login']">
+                      <i class="ti-layout-sidebar-left"></i> Logout
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="pcoded-main-container" style="margin-top: 56px;">
+      <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+          <div class="pcoded-inner-content">
+            <div class="main-body">
+              <div class="page-wrapper">
+                <div class="page-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-4 wrapper">
+                        <nav class="sidebar text-center">
+                          <ul class="list-group">
+                            <app-contact *ngFor="let contact of contacts" [contact]="contact"
+                              [selectedItem]="selectedItem" (onSelectedContact)="selectContact($event)"></app-contact>
+                          </ul>
+                        </nav>
+                      </div>
+                      <ng-container [ngSwitch]="action">
+                        <div class="col-8" *ngSwitchCase="'view'">
+                          <app-view-contact [selectedContact]="selectedItem" (changeAction)="changeAction($event)"></app-view-contact>
+                        </div>
+                        <div class="col-8" *ngSwitchCase="'add'">
+                          <app-add-contact></app-add-contact>
+                        </div>
+                        <div class="col-8" *ngSwitchCase="'edit'">
+                          <app-add-contact [selectedContact]="selectedItem"></app-add-contact>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
