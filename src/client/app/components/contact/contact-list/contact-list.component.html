@@ -7,21 +7,21 @@
       <div class="navbar-wrapper">
         <div class="navbar-container">
           <div>
-            <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
+            <ul class="nav-right" [ngClass]="isCollapsedMobile">
               <li class="header-notification lng-dropdown">
                 <a href="javascript:;" id="dropdown-active-item">
                   <i class="flag-icon flag-icon-gb m-r-5"></i> English
                 </a>
               </li>
               <li class="user-profile header-notification">
-                <a [routerLink]="['/']">
-                  <span>John Doe</span>
+                <a [routerLink]="['/contacts']">
+                  <span>{{userName}}</span>
                   <i class="ti-angle-down"></i>
                 </a>
                 <ul class="show-notification profile-notification">
                   <li>
-                    <a [routerLink]="['/auth/login']">
-                      <i class="ti-layout-sidebar-left"></i> Logout
+                    <a class="pointer" (click)="logout()">
+                      <i class="ti-layout-sidebar-left pointer"></i> Logout
                     </a>
                   </li>
                 </ul>
@@ -56,7 +56,7 @@
                           <app-add-contact></app-add-contact>
                         </div>
                         <div class="col-8" *ngSwitchCase="'edit'">
-                          <app-add-contact [selectedContact]="selectedItem"></app-add-contact>
+                          <app-edit-contact [selectedContact]="selectedItem" (onSelectedContact)="selectContact($event)"></app-edit-contact>
                         </div>
                       </ng-container>
                     </div>

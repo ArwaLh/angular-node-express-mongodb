@@ -1,3 +1,4 @@
+import { EditContactComponent } from './components/contact/edit-contact/edit-contact.component';
 import { SharedModule } from './shared/shared.module';
 import { ViewContactComponent } from './components/contact/view-contact/view-contact.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +29,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ContactListComponent,
     ContactComponent,
     AddContactComponent,
+    EditContactComponent,
     LoginComponent,
     ViewContactComponent
   ],

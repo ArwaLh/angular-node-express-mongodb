@@ -25,9 +25,7 @@ export class ViewContactComponent implements OnInit {
   logout() {
     this.auth.logout();
   }
-  onChangeAction(action, id){
-    console.log('action', action);
-    
+  onChangeAction(action, id){   
     this.changeAction.emit(action);
   }
 

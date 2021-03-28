@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-
+const ObjectId = require('mongodb').ObjectId;
 const checkJwt = require('express-jwt');
 
 function apiRouter(database) {
@@ -47,6 +47,18 @@ function apiRouter(database) {
       return res.status(201).json(newRecord);
     });
   });
+  router.put('/contact', (req, res) => {
+    console.log('update request', req.body)
+    const user = req.body;
+    user._id =new ObjectId(req.body._id);
+    const contactsCollection = database.collection('contacts');
+    contactsCollection.updateOne({ _id: user._id }, { $set: user }, (err, r) => {
+      if (err) {
+        return res.status(500).json({ error: 'Error inserting new record.' })
+      }
+      return res.status(201).json('successfully updated');
+    });
+  });
 
   router.post('/authenticate', (req, res) => {
     const user = req.body;
@@ -70,10 +82,12 @@ function apiRouter(database) {
         };
 
         const token = jwt.sign(payload, 'secretJWT', { expiresIn: '4h' });
+        console.log('decoded',jwt.decode(token))
 
         return res.json({
           message: 'successfuly authenticated',
-          token: token
+          token: token,
+          user: result.username
         });
       });
   });

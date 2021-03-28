@@ -24,5 +24,11 @@ export class AuthService {
     localStorage.removeItem(this.storageKey);
     this.router.navigate(['/login']);
   }
+  setUserName(userName){
+    localStorage.setItem('userName', userName);
+  }
+  getUserName(){
+    return localStorage.getItem('userName');
+  }
 
 }

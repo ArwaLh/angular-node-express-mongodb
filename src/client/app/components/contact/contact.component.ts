@@ -17,9 +17,7 @@ export class ContactComponent implements OnInit {
   @Output() public onSelectedContact: EventEmitter<any> = new EventEmitter<any>();
   constructor() { }
 
-  ngOnInit() {
-    console.log('selected item', this.selectedItem);
-    
+  ngOnInit() {   
   }
   onSelect(item): void {
     this.selectedItem = item;
