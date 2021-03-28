@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../shared/api.service';
 import { Contact } from '../../../shared/contact.model';
 
@@ -15,8 +16,11 @@ export class AddContactComponent implements OnInit {
   contactForm: FormGroup;
 
   @Input() selectedContact?;
+  @Output() public onSelectedContact: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public changeAction: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public changeContacts: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public api: ApiService) { }
+  constructor(public api: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.contactForm = new FormGroup({
@@ -28,7 +32,7 @@ export class AddContactComponent implements OnInit {
     });
   }
 
-  addContact(form: NgForm) {
+  addContact() {
     this.loading = true;
 
     const formValues = Object.assign({}, this.contactForm.value);
@@ -41,11 +45,13 @@ export class AddContactComponent implements OnInit {
       email: formValues.email
     };
 
-    this.api.post('contacts', contact)
-      .subscribe(data => {
-        form.reset();
-        this.loading = false;
-        this.newContact = data;
+    this.api.post('contact', contact)
+      .subscribe(dataContact => {
+        this.contactForm.reset();
+        this.api.get('contacts')
+        .subscribe(data => {  this.changeContacts.emit(data); this.onSelectedContact.emit(dataContact); this.changeAction.emit('view'); });    
+        this.router.navigate(['/contacts']);
+
       });
   }
 

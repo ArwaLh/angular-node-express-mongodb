@@ -17,6 +17,9 @@ export class EditContactComponent implements OnInit {
 
   @Input() selectedContact?;
   @Output() public onSelectedContact: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public changeAction: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public changeContacts: EventEmitter<any> = new EventEmitter<any>();
+
 
   constructor(public api: ApiService, private router:Router) { }
 
@@ -30,9 +33,7 @@ export class EditContactComponent implements OnInit {
     });
   }
 
-  editContact() {
-    console.log(this.selectedContact);
-    
+  editContact() {    
     const formValues = Object.assign({}, this.contactForm.value);
     const contact: Contact = {
       _id: this.selectedContact._id,
@@ -44,11 +45,11 @@ export class EditContactComponent implements OnInit {
     };
 
     this.api.put('contact', contact)
-      .subscribe(data => {
-        this.contactForm.reset();
-        this.newContact = data;
-        this.router.navigate(['/contacts']);
+      .subscribe(dataContact => {               
+        this.api.get('contacts')
+        .subscribe(data => { this.changeContacts.emit(data); this.changeAction.emit('view');this.onSelectedContact.emit(dataContact);  });    
       });
+      this.router.navigate(['/contacts']);
   }
 
 }

@@ -32,31 +32,30 @@ function apiRouter(database) {
 
   });
 
-  router.post('/contacts', (req, res) => {
+  router.post('/contact', (req, res) => {
     const user = req.body;
-    console.log('user', user);
     const contactsCollection = database.collection('contacts');
 
     contactsCollection.insertOne(user, (err, r) => {
       if (err) {
         return res.status(500).json({ error: 'Error inserting new record.' })
       }
-
       const newRecord = r.ops[0];
-
       return res.status(201).json(newRecord);
     });
   });
   router.put('/contact', (req, res) => {
-    console.log('update request', req.body)
     const user = req.body;
     user._id =new ObjectId(req.body._id);
     const contactsCollection = database.collection('contacts');
-    contactsCollection.updateOne({ _id: user._id }, { $set: user }, (err, r) => {
+
+    contactsCollection.updateOne({ _id: user._id }, { $set: user }, { new: true}, (err, r) => {
       if (err) {
         return res.status(500).json({ error: 'Error inserting new record.' })
       }
-      return res.status(201).json('successfully updated');
+      contactsCollection.findOne({ _id: user._id }, (err, result) => {
+        return res.status(201).json(result);
+      });
     });
   });
 
@@ -82,8 +81,6 @@ function apiRouter(database) {
         };
 
         const token = jwt.sign(payload, 'secretJWT', { expiresIn: '4h' });
-        console.log('decoded',jwt.decode(token))
-
         return res.json({
           message: 'successfuly authenticated',
           token: token,

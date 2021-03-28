@@ -21,11 +21,14 @@ export class ContactListComponent implements OnInit {
     this.api.get('contacts')
       .subscribe(data => { this.contacts = data; this.selectedItem = data[0] });    
   }
-  selectContact(contact){
+  selectContact(contact){   
     this.selectedItem= contact;
   }
   changeAction(action){
     this.action = action;
+  }
+  changeContacts(contacts){
+    this.contacts = contacts;
   }
   logout() {
     this.auth.logout();

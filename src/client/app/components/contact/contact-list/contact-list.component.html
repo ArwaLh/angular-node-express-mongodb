@@ -53,10 +53,10 @@
                           <app-view-contact [selectedContact]="selectedItem" (changeAction)="changeAction($event)"></app-view-contact>
                         </div>
                         <div class="col-8" *ngSwitchCase="'add'">
-                          <app-add-contact></app-add-contact>
+                          <app-add-contact (onSelectedContact)="selectContact($event)" (changeAction)="changeAction($event)"  (changeContacts)="changeContacts($event)"></app-add-contact>
                         </div>
                         <div class="col-8" *ngSwitchCase="'edit'">
-                          <app-edit-contact [selectedContact]="selectedItem" (onSelectedContact)="selectContact($event)"></app-edit-contact>
+                          <app-edit-contact [selectedContact]="selectedItem" (onSelectedContact)="selectContact($event)" (changeAction)="changeAction($event)" (changeContacts)="changeContacts($event)"></app-edit-contact>
                         </div>
                       </ng-container>
                     </div>

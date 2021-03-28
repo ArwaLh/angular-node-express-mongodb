@@ -1,6 +1,6 @@
 <app-card>
   <div class="card-header"><h5>Add New Contact</h5></div>
-  <form [formGroup]="contactForm" (submit)="addContact(contactForm)" [class.loading]="loading">
+  <form [formGroup]="contactForm" (submit)="addContact()" [class.loading]="loading">
     <div class="add-form-container">
       <div class="form-group row">
         <label class="col-sm-2">First Name</label>
