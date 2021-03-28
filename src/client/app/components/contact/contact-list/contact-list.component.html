@@ -43,6 +43,17 @@
                       <div class="col-4 wrapper">
                         <nav class="sidebar text-center">
                           <ul class="list-group">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <select class="form-control form-select-lg" data-toggle="dropdown" [(ngModel)]="selectedOptions">
+                                  <option *ngFor="let item of filterOptions" class="dropdown-item" [value]="item">{{item}}</option>
+                                </select>
+                              </div>
+                              <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" [(ngModel)]="selectedFilter">
+                              <div class="input-group-append">
+                                <span class="input-group-text fa fa-search" id="basic-addon2" (click)="search()"></span>
+                              </div>
+                            </div>    
                             <app-contact *ngFor="let contact of contacts" [contact]="contact"
                               [selectedItem]="selectedItem" (onSelectedContact)="selectContact($event)"></app-contact>
                           </ul>

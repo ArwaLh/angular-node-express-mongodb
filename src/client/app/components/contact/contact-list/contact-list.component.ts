@@ -13,22 +13,58 @@ export class ContactListComponent implements OnInit {
   contacts: Contact[];
   selectedItem: Contact;
   action = 'view';
-  userName= localStorage.getItem('userName');
+  userName = localStorage.getItem('userName');
+  filterOptions = ['firstName', 'lastName', 'email', 'phone', 'address'];
+  selectedOptions = 'firstName';
+  selectedFilter = '';
+  allContacts = [];
 
   constructor(public api: ApiService, public auth: AuthService) { }
 
   ngOnInit() {
     this.api.get('contacts')
-      .subscribe(data => { this.contacts = data; this.selectedItem = data[0] });    
+      .subscribe(data => { this.allContacts = data; this.contacts = data; this.selectedItem = data[0] });
   }
-  selectContact(contact){   
-    this.selectedItem= contact;
+  selectContact(contact) {
+    this.selectedItem = contact;
   }
-  changeAction(action){
+  changeAction(action) {
     this.action = action;
   }
-  changeContacts(contacts){
+  changeContacts(contacts) {
     this.contacts = contacts;
+  }
+  search() {
+    if(this.selectedFilter != '' && this.selectedFilter != null && this.selectedFilter != undefined){
+      switch (this.selectedOptions) {
+        case 'firstName':
+          this.contacts = this.contacts.filter(o =>
+            o.firstName.toLowerCase().includes(this.selectedFilter.toLowerCase()));
+          break;
+        case 'lastName':
+          this.contacts = this.contacts.filter(o =>
+            o.lastName.toLowerCase().includes(this.selectedFilter.toLowerCase()));
+          break;
+        case 'email':
+          this.contacts = this.contacts.filter(o =>
+            o.email.toLowerCase().includes(this.selectedFilter.toLowerCase()));
+          break;
+        case 'phone':
+          this.contacts = this.contacts.filter(o =>
+            o.phone.toLowerCase().includes(this.selectedFilter.toLowerCase()));
+          break;
+        case 'address':
+          this.contacts = this.contacts.filter(o =>
+            o.address.toLowerCase().includes(this.selectedFilter.toLowerCase()));
+          break;
+        default:
+          this.contacts = this.allContacts;
+          break;
+      }
+    } else {
+      this.contacts = this.allContacts;
+    }
+
   }
   logout() {
     this.auth.logout();
